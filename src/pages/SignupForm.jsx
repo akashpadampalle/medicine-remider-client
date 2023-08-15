@@ -20,8 +20,7 @@ const SignupForm = () => {
         axios.post('/users/create/', formData)
         .then((res) => {
             Cookies.set('jwtToken', res.data.jwtToken);
-            // navigator.location('/profile');
-            navigate('/profile');
+            navigate('/profile', {replace: true});
         })
         .catch((error) => {
             console.log(error);

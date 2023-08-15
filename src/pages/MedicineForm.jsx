@@ -14,7 +14,7 @@ const MedicineForm = () => {
         e.preventDefault();
         try {
             const sendData = async () => {
-                const res = await axios.post('/medicine/create', formData, {withCredentials: true});
+                const res = await axios.post('/medicines/create', formData, {withCredentials: true});
                 setFormData({
                     name: '',
                     dosage: '',

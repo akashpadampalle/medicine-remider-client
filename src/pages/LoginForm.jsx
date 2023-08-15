@@ -4,23 +4,21 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
 
-    const navigate = useNavigate();
-
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
 
+    const navigate = useNavigate();
+
+
     function handlesubmit(e) {
         e.preventDefault();
-        // axios.post('/users/login/', formData)
-        //     .then((res) => console.log(res))
-        //     .catch((error) => console.log(error));
         const fetchData = async () => {
             try {
                 const res = await axios.post('/users/login/', formData);
                 Cookies.set('jwtToken', res.data.jwtToken);
-                navigate('/profile');
+                navigate('/profile', {replace: true})
             } catch (error){
                 console.log(error);
             }
